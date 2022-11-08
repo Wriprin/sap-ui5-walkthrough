@@ -1,11 +1,13 @@
 <!-- 
-   1. 创建 View Folder - App.view.xml
-   2. 引入 "sap.m" namespace
-   3. 为 "sap.ui.core.mvc" 取别名 "mvc"，用于定位所有 MVC 资源
+   1. 配置 View 对应 Controller Name
  -->
 <mvc:View
    xmlns="sap.m"
+   controllerName="sap.ui.demo.walkthrough.controller.App"
    xmlns:mvc="sap.ui.core.mvc">
-<!-- 4. 使用 Text 控件 绑定属性 "Hello, World" -->
-   <Text text="Hello, World!"/>
+
+   <!-- 2. 添加一个 Button 控件，配置属性 text 和 添加 press 事件，对应 handler 函数名为 onShowHello -->
+   <Button
+       text="Say Hello"
+       press=".onShowHello"/>
 </mvc:View>
