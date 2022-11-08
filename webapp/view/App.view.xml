@@ -1,0 +1,11 @@
+<!-- 
+   1. 创建 View Folder - App.view.xml
+   2. 引入 "sap.m" namespace
+   3. 为 "sap.ui.core.mvc" 取别名 "mvc"，用于定位所有 MVC 资源
+ -->
+<mvc:View
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc">
+<!-- 4. 使用 Text 控件 绑定属性 "Hello, World" -->
+   <Text text="Hello, World!"/>
+</mvc:View>
