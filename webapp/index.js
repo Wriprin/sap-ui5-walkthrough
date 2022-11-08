@@ -1,7 +1,11 @@
 sap.ui.define([
-
-], function () {
+	"sap/m/Text"
+], function (
+	Text) {
 	"use strict";
 
-	alert("UI5 is ready.");
+	// 2. 将 Text 对象 指定到 id 为 "content" 的 DOM 节点对象 -> Body
+	new Text({
+		text: "Hello, World!"
+	}).placeAt(content);
 });
