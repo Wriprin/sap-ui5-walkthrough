@@ -1,48 +1,36 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
-    "sap/ui/model/json/JSONModel",
-    "sap/ui/model/resource/ResourceModel",
 ], function(
 	Controller,
 	MessageToast,
-	JSONModel,
-	ResourceModel,
 ) {
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.walkthrough.controller.App", {
-        onInit: function() {
-            var oData = {
-                recipient: {
-                    name: "World"
-                }
-            }
+        /** 官方 Wiki
+         * In the init function we instantiate our data model and the i18n model like we did before in the app controller.
+         * Be aware that the models are directly set on the component and not on the root view of the component.
+         * However, as nested controls automatically inherit the models from their parent controls,
+         * the models will be available on the view as well.
+         */
 
-            var oModel = new JSONModel(oData);
-            this.getView().setModel(oModel);
+        /** 官方 Wiki 拆解分析
+         * Model 是绑定到了 Component 上，而不是 Component 对应的 rootView 上
+         * 虽然，i18n 和 data Model 是绑定到了 Component 上
+         * 但是 嵌套控件 会自动继承他们的 父类控件的 models
+         * 上面这句话翻译一下就是：我们的 Controller 对应的 View 可以直接拿到 Component 中构建好的 Models 使用
+         * 同理，Controller 中 this.getView().getModel() 就可以有效的拿到对应的 Model
+         * 因此 代码 31 行，32 行就是有效的
+         */
 
-            // 2. 将 i18n Model 绑定到 对应 View 上
-            // 2.1 构建对应 Resource Model
-            var i18nModel = new ResourceModel({
-                // 2.2 bundleName 为 locate 定位
-                // 2.3 由三部分组成：rootPath(index.html 中定义) + i18n(文件夹) + i18n(去除后缀的文件名)
-                bundleName: "sap.ui.demo.walkthrough.i18n.i18n"
-            });
-            // 2.4 Resource Model 绑定
-            // 2.5 如果并行使用多个 Model，那么就需要对 Model 命名（指定 KeyName，如下为 "i18n"，从而区分 Model）
-            this.getView().setModel(i18nModel, "i18n");
-        },
-
+        // 这样一来，我们将初始加载 Init 交给了 Component 来完成，Controller 则专注于 对应 View 的逻辑处理即可
+        
         onShowHello : function () {
-            // 3. 获取 i18n Model Bundle
+            // 4. 获取 i18nModel 和 DataModel 数据，占位符“拼接”，并弹窗显示 
             var oBundle = this.getView().getModel("i18n").getResourceBundle();
-            // 4. 获取 oModel 的 "World"「用于 拼接 i18n 的 "helloMsg"」
             var sRecipient = this.getView().getModel().getProperty("/recipient/name");
-            // 5. 获取 i18n Model Bundel 对应 helloMsg 对象，并拼接 sRecipient
-            // 5.1 ResourceBundle 对象有 getText 方法，具体使用参见对应 API 文档即可
             var sMsg = oBundle.getText("helloMsg", [sRecipient]);
-            // 6. 弹窗 sMsg：Hello World
             MessageToast.show(sMsg);
         }
 	});

@@ -3,11 +3,6 @@
    controllerName="sap.ui.demo.walkthrough.controller.App"
    xmlns:mvc="sap.ui.core.mvc">
 
-   <!-- 
-        7. 添加 "Say Hello" Text 文本
-        7.1 引用格式："{i18n>showHelloButtonText}"
-    -->
-    
    <Button
        text="{i18n>showHelloButtonText}"
        press=".onShowHello"/>
