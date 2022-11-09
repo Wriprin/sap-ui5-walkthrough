@@ -1,12 +1,8 @@
-<!-- 
-   1. 配置 View 对应 Controller Name
- -->
 <mvc:View
    xmlns="sap.m"
    controllerName="sap.ui.demo.walkthrough.controller.App"
    xmlns:mvc="sap.ui.core.mvc">
 
-   <!-- 2. 添加一个 Button 控件，配置属性 text 和 添加 press 事件，对应 handler 函数名为 onShowHello -->
    <Button
        text="Say Hello"
        press=".onShowHello"/>
