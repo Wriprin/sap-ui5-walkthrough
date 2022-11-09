@@ -3,6 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>SAPUI5 Walkthrough</title>
+	<!-- 
+		5. data-sap-ui-compatVersion="edge" 属性只有设置为 "edge" 才可以使用「复杂绑定语法」
+		5.1 To make use of the most recent functionality of SAPUI5 we define the compatibility version as edge.
+		5.2 如果非 "edge"，则只能使用「标准绑定语法」
+		5.3 e.g. 如果 非 "edge"，则 "Hello {/recipient/name}" 无效；"{/recipient/name}" 有效
+		5.4 compatVersion 设置为 "edge" 对 复杂绑定语法 本质上有影响的原因，是自动配置了 data-sap-ui-bindingSyntax="complex"
+		5.5 所以如果不设置 "edge"，也可以手动添加「data-sap-ui-bindingSyntax="complex"」即可
+	 -->
 	<script
 		id="sap-ui-bootstrap"
 		src="https://sdk.openui5.org/resources/sap-ui-core.js"

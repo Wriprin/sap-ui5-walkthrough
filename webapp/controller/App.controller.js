@@ -1,19 +1,31 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-    // 1. 引入 MessageToast 控件
-    // 1.1 主要想表明 该部分 引用可以异步加载，提升性能
-    //  The browser can decide when and how the resources are loaded prior to code execution.
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+    "sap/ui/model/json/JSONModel"
 ], function(
 	Controller,
-    // 2. 对象入参
-	MessageToast
+	MessageToast,
+	JSONModel
 ) {
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.walkthrough.controller.App", {
+        onInit: function() {
+            // 1. 构建模拟数据 oData
+            var oData = {
+                recipient: {
+                    name: "World"
+                }
+            }
+
+            // 2. oData 入参实例化为 JSONModel -> oModel
+            var oModel = new JSONModel(oData);
+            
+            // 3. 将 Model 绑定到 View 上
+            this.getView().setModel(oModel);
+        },
+
         onShowHello : function () {
-            // 3. 调用 show() 方法 指定 iMessage 进行消息提示
             MessageToast.show("Hello, World.")
         }
 	});
