@@ -3,15 +3,15 @@
    controllerName="sap.ui.demo.walkthrough.controller.App"
    xmlns:mvc="sap.ui.core.mvc">
 
+   <!-- 
+        7. 添加 "Say Hello" Text 文本
+        7.1 引用格式："{i18n>showHelloButtonText}"
+    -->
+    
    <Button
-       text="Say Hello"
+       text="{i18n>showHelloButtonText}"
        press=".onShowHello"/>
 
-    <!-- 
-        4. Input 控件，显示刚刚构建并绑定到该 View 上的 oModel
-        4.1 {para} 的数据为 oModel 数据，这种使用方式就叫做「数据绑定」
-        4.2 "/recipient/name" 声明了 model 中的路径
-     -->
     <Input
         value="{/recipient/name}"
         description="Hello {/recipient/name}"
