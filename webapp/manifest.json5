@@ -1,0 +1,74 @@
+// 1. 构建 并 配置 manifest.json
+/** The SAP Fiori launchpad acts as an application container and instantiates the app without 
+  * having a local HTML file for the bootstrap. Instead, the descriptor file will be parsed 
+  * and the component is loaded into the current HTML page. This allows several apps to be displayed 
+  * in the same context. Each app can define local settings, such as language properties, supported devices, 
+  * and more. And we can also use the descriptor file to load additional resources 
+  * and instantiate models like our i18n resource bundle.
+  */
+
+/** 「Mainfest」Info
+  * The content of the manifest.json file is a configuration object in JSON format that contains all global application settings and parameters.
+  * The manifest file is called the descriptor for applications, components, and libraries and is also referred to as “descriptor” or “app descriptor” when used for applications.
+  * It is stored in the webapp folder and read by SAPUI5 to instantiate the component.
+  * 旨以 JSON 格式为 App 存储「全局的设置和参数」的文件
+  */
+
+/** 1. 从一开始的 index.js（配置 rootView + 绑定 Body） + controller.js（加载初始化 e.g. Model 配置）
+  * 2. 到后来的 Component（配置 rootView + 加载初始化（e.g. Model 配置））
+  * 3. 再到现在 彻底解耦，将所有配置项分离出来 -> manifest.json
+  * 4. 使得 App 配置更加灵活，可以在同一环境下同时加载多个 Apps
+  */
+
+/** 1. 可以看到 Tutorial 中介绍 3 个重要的部分，分别是：「sap.app」，「sap.ui」,「sap.ui5」
+  * 2. 各个 key - value 可参见 官方 wiki 介绍学习
+  * 3. URL: https://sapui5.hana.ondemand.com/#/topic/8f93bf2b2b13402e9f035128ce8b495f
+  */
+
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "sap.ui.demo.walkthrough",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "sap.ui.demo.walkthrough.view.App",
+            "type": "XML",
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.93",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sap.ui.demo.walkthrough.i18n.i18n",
+                    "supportedLocales": [
+                        ""
+                    ],
+                    "fallbackLocale": ""
+                }
+            }
+        }
+    }
+}

@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Wriprin/sap-ui5-walkthrough/issues"
   },
-  "homepage": "https://github.com/Wriprin/sap-ui5-walkthrough#readme"
+  "homepage": "https://github.com/Wriprin/sap-ui5-walkthrough#readme",
+  "dependencies": {
+    "json5": "^2.2.1"
+  }
 }
