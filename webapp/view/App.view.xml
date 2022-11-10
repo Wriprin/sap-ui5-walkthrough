@@ -1,4 +1,3 @@
-<!-- 2. 添加 displayBlock="true" 使得 View 的全屏高度正常工作 -> 可以看到页面右侧 Scroll Bar 消失 -->
 <mvc:View
    xmlns="sap.m"
    controllerName="sap.ui.demo.walkthrough.controller.App"
@@ -6,27 +5,34 @@
    displayBlock="true">
 
    <!-- 
-        1. 使用 Controls 规划页面布局
+        1. 原来是使用 <App> 作为 rootElement，现在我们使用 <Shell>
+        2. <Shell> 通过在 Screen 上引入所谓的 letterbox 来 自适应 App 相对设备屏幕的尺寸
+        3. 如果屏幕大小大于某个宽度，则 <Shell> 将会是是我们应用程序的最外层控件，并自动显示所谓的 letterbox
+        
+        PS: 如果外层已经有一层 <Shell> 了，就不要再嵌套 <Shell> 控件了
+            e.g. SAP Fiori Launchpad
     -->
-    <App>
-        <pages>
-            <Page title="{i18n>homePageTitle}">
-                <content>
-                    <Panel headerText="{i18n>helloPanelTitle}">
-                        <content>
-                            <Button
-                            text="{i18n>showHelloButtonText}"
-                            press=".onShowHello"/>
-                     
-                         <Input
-                             value="{/recipient/name}"
-                             description="Hello {/recipient/name}"
-                             valueLiveUpdate="true"
-                             width="60%"/>
-                        </content>                        
-                    </Panel>
-                </content>
-            </Page>
-        </pages>
-    </App>
+    <Shell>
+        <App>
+            <pages>
+                <Page title="{i18n>homePageTitle}">
+                    <content>
+                        <Panel headerText="{i18n>helloPanelTitle}">
+                            <content>
+                                <Button
+                                text="{i18n>showHelloButtonText}"
+                                press=".onShowHello"/>
+                         
+                             <Input
+                                 value="{/recipient/name}"
+                                 description="Hello {/recipient/name}"
+                                 valueLiveUpdate="true"
+                                 width="60%"/>
+                            </content>                        
+                        </Panel>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
 </mvc:View>
