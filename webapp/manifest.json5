@@ -1,4 +1,3 @@
-// 1. 构建 并 配置 manifest.json
 /** The SAP Fiori launchpad acts as an application container and instantiates the app without 
   * having a local HTML file for the bootstrap. Instead, the descriptor file will be parsed 
   * and the component is loaded into the current HTML page. This allows several apps to be displayed 

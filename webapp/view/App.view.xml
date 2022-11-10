@@ -1,15 +1,32 @@
+<!-- 2. 添加 displayBlock="true" 使得 View 的全屏高度正常工作 -> 可以看到页面右侧 Scroll Bar 消失 -->
 <mvc:View
    xmlns="sap.m"
    controllerName="sap.ui.demo.walkthrough.controller.App"
-   xmlns:mvc="sap.ui.core.mvc">
+   xmlns:mvc="sap.ui.core.mvc"
+   displayBlock="true">
 
-   <Button
-       text="{i18n>showHelloButtonText}"
-       press=".onShowHello"/>
-
-    <Input
-        value="{/recipient/name}"
-        description="Hello {/recipient/name}"
-        valueLiveUpdate="true"
-        width="60%"/>
+   <!-- 
+        1. 使用 Controls 规划页面布局
+    -->
+    <App>
+        <pages>
+            <Page title="{i18n>homePageTitle}">
+                <content>
+                    <Panel headerText="{i18n>helloPanelTitle}">
+                        <content>
+                            <Button
+                            text="{i18n>showHelloButtonText}"
+                            press=".onShowHello"/>
+                     
+                         <Input
+                             value="{/recipient/name}"
+                             description="Hello {/recipient/name}"
+                             valueLiveUpdate="true"
+                             width="60%"/>
+                        </content>                        
+                    </Panel>
+                </content>
+            </Page>
+        </pages>
+    </App>
 </mvc:View>

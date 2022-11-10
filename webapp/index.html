@@ -4,10 +4,6 @@
 	<meta charset="utf-8">
 	<title>SAPUI5 Walkthrough</title>
 
-	<!-- 在 index.html 中声明我们的 Component
-		2. 删掉 data-sap-ui-libs 的引用，因为我们刚刚在 manifest.json 中配置了所需的依赖库，包括 sap.m
-		3. 修改 onInit 属性 为 Component -> 启用 ComponentSupport module
-	 -->
 	<script
 		id="sap-ui-bootstrap"
 		src="https://sdk.openui5.org/resources/sap-ui-core.js"
@@ -23,12 +19,6 @@
 </head>
 
 <body class="sapUiBody" id="content">
-	<!-- 
-		4. 我们在 div 标签内添加属性，以声明我们 Body 中的 Component
-		* 这样一来，当 Component - onInit 事件触发时，我们的 Component 就会被实例化
-
-		5. 现在我们就不再需要 index.js 文件了（所有 配置 & 加载 都已被 manifest.json 所取代）
-	 -->
 	<div data-sap-ui-component data-name="sap.ui.demo.walkthrough" data-id="container" data-settings='{"id" : "walkthrough"}'></div>
 </body>
 
