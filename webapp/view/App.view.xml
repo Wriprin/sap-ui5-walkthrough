@@ -5,29 +5,33 @@
    displayBlock="true">
 
    <!-- 
-        1. 原来是使用 <App> 作为 rootElement，现在我们使用 <Shell>
-        2. <Shell> 通过在 Screen 上引入所谓的 letterbox 来 自适应 App 相对设备屏幕的尺寸
-        3. 如果屏幕大小大于某个宽度，则 <Shell> 将会是是我们应用程序的最外层控件，并自动显示所谓的 letterbox
-        
-        PS: 如果外层已经有一层 <Shell> 了，就不要再嵌套 <Shell> 控件了
-            e.g. SAP Fiori Launchpad
+        1. 使用 Margins 和 Paddings 属性来调节 Element / Controls 的位置间距
+        2. Wiki 建议可以直接使用 SAPUI5 官方封装好的 Classes 来调节
+        PS: Use the standard SAPUI5 CSS classes for the layout if possible.
     -->
     <Shell>
         <App>
             <pages>
                 <Page title="{i18n>homePageTitle}">
                     <content>
-                        <Panel headerText="{i18n>helloPanelTitle}">
+                        <Panel headerText="{i18n>helloPanelTitle}"
+                            class="sapUiResponsiveMargin"
+                            width="auto">
+
                             <content>
                                 <Button
                                 text="{i18n>showHelloButtonText}"
-                                press=".onShowHello"/>
+                                press=".onShowHello"
+                                class="sapUiSmallMarginEnd"/>
                          
                              <Input
-                                 value="{/recipient/name}"
-                                 description="Hello {/recipient/name}"
-                                 valueLiveUpdate="true"
-                                 width="60%"/>
+                                value="{/recipient/name}"
+                                description="Hello {/recipient/name}"
+                                valueLiveUpdate="true"
+                                width="60%"/>
+                            <Text
+                                text="Hello {/recipient/name}"
+                                class="sapUiSmallMargin"/>
                             </content>                        
                         </Panel>
                     </content>
