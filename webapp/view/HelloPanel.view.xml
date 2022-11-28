@@ -1,0 +1,28 @@
+<mvc:View
+   controllerName="sap.ui.demo.walkthrough.controller.HelloPanel"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc">
+
+   <!-- 
+        1. 创建 HelloPanel View 文件，将 App View 中的 Panel 分离出来，实现 reusable asset 的「复用」
+    -->
+
+   <Panel
+      headerText="{i18n>helloPanelTitle}"
+      class="sapUiResponsiveMargin"
+      width="auto" >
+      <content>
+         <Button
+            text="{i18n>showHelloButtonText}"
+            press=".onShowHello"
+            class="myCustomButton"/>
+         <Input
+            value="{/recipient/name}"
+            valueLiveUpdate="true"
+            width="60%"/>
+         <FormattedText
+            htmlText="Hello {/recipient/name}"
+            class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+      </content>
+   </Panel>
+</mvc:View>

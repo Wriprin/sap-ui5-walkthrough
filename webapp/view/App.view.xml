@@ -5,41 +5,18 @@
    displayBlock="true">
 
     <Shell>
-        <!-- 3. 引入 myAppDemoWT selector -->
         <App class="myAppDemoWT">
             <pages>
                 <Page title="{i18n>homePageTitle}">
                     <content>
-                        <Panel headerText="{i18n>helloPanelTitle}"
-                            class="sapUiResponsiveMargin"
-                            width="auto">
-
-                            <content>
-                                <Button
-                                text="{i18n>showHelloButtonText}"
-                                press=".onShowHello"
-                                class="myCustomButton"/>
-                         
-                             <Input
-                                value="{/recipient/name}"
-                                description="Hello {/recipient/name}"
-                                valueLiveUpdate="true"
-                                width="60%"/>
-
-                            <!-- 4. 这里可以看到 关于 Theme Color 我们并未在 CSS 样式中写死
-                                 5. 而是选择了 SAPUI5 官方的 Class 来保证 Highlight 会一直和整体的主题的高亮颜色保持一致性
-                                 PS: Highlight 颜色现在将取决于 用户选择的 主题颜色 -> it's more flexible!
-
-                                 官方 wiki: Do not specify colors in custom CSS but use the standard theme-dependent classes instead.
-                            -->
-                            <FormattedText 
-                                htmlText="Hello {/recipient/name}"
-                                class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
-                            </content>                        
-                        </Panel>
+                        <!-- 
+                            2. We refer to this using an XMLView tag in the content aggregation of the panel.
+                         -->
+                        <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.HelloPanel"/>
                     </content>
                 </Page>
             </pages>
         </App>
     </Shell>
+
 </mvc:View>
