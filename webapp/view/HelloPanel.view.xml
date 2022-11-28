@@ -8,22 +8,6 @@
       class="sapUiResponsiveMargin"
       width="auto" >
       <content>
-        <!-- 
-            1. 添加一个 Button，添加 press 事件，弹出 Dialog
-            2. 这里我们将 Dialog 分离到 *.fragment.xml 中
-                - 1. 相比于再创建一个 *.view.xml，Fragment 无需创建对应的 Controller，它只是 Controls 的「reusable or separable assets」
-                - 2. 当页面加载渲染时，View 的 DOM 对象 会被直接渲染加载，但 Fragment 只有当被调用/使用时，才会加载
-                    - e.g. Dialog 对话框，避免一些不需要立刻加载的资源在第一次访问时全部加载
-         -->
-
-         <!-- 
-            3. 这里 Button 指定了 id 属性，建议每个 控件 都指定自己的 id，方便被使用/指定/分辨
-                如果不指定，OpenUI5 运行时 会默认为控件按照先后顺序赋于名称
-                e.g. 两个 Button 都没有指定 id
-                    - 第一个 Button: __button0
-                    - 第二个 Button: __button1
-                    - etc.
-         -->
         <Button
             id="helloDialogButton"
             text="{i18n>openDialogButtonText}"

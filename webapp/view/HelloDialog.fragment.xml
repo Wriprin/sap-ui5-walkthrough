@@ -1,21 +1,23 @@
 <core:FragmentDefinition
    xmlns="sap.m"
    xmlns:core="sap.ui.core" >
-   <!-- 
-        4. 关于 Fragment 的使用注意 wiki:
-            - The syntax is similar to a view,
-                - 其语法和 View 是相似的
-            - but since fragments do not have a controller this attribute is missing.
-                - 但是由于 Fragments 没有 Controller，所以也就没有 指定 Controller 名称的属性
-            - Also, the fragment does not have any footprint in the DOM tree of the app,
-                - 并且，Fragment 是不属于 该 Application 对应的 DOM 对象的（DOM 树上无此节点）
-            - and there is no control instance of the fragment itself (only the contained controls).
-                - 同时，这里也没有 Fragment 自身所对应的 Control 实例对象，它只是去 包含 1~n 个 Controls（组件）
-            - It is simply a container for a set of reuse controls.
-                - 可以简单的理解为「Fragment 是 一组可复用控件的容器」
-    -->
    <Dialog
       id="helloDialog"
       title="Hello {/recipient/name}">
+
+      <!--
+         1. 添加一个 关闭 Dialog 的 OK Button
+         - 这里我们使用了 Dialog 的一个 Aggregation - beginButton
+         - 它保证了 内部 button 为 ltr（从左侧渲染）
+         - 这样做的意义是，按照常理 确定 在 左侧，否定 在 右侧
+         - 这样一来，如果再加一个 否定按钮，那就应该是 endButton（rtl（从右侧渲染）） - Button
+      -->
+      <beginButton>
+         <Button
+            text="{i18n>dialogCloseButtonText}"
+            press=".onCloseDialog"
+            type="Accept"/>
+      </beginButton>
+
    </Dialog>
 </core:FragmentDefinition>
