@@ -28,9 +28,8 @@ sap.ui.define([
                 oDialog.open();
             });
         },
-        // 2. OK Button 关闭对话框
+        // OK Button 关闭对话框
         onCloseDialog: function (oEvent) {
-            // 2.1 Get Element by id.
             this.byId("helloDialog").close();
         }
     });

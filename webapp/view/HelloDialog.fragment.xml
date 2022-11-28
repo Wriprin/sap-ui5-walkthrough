@@ -5,13 +5,21 @@
       id="helloDialog"
       title="Hello {/recipient/name}">
 
-      <!--
-         1. 添加一个 关闭 Dialog 的 OK Button
-         - 这里我们使用了 Dialog 的一个 Aggregation - beginButton
-         - 它保证了 内部 button 为 ltr（从左侧渲染）
-         - 这样做的意义是，按照常理 确定 在 左侧，否定 在 右侧
-         - 这样一来，如果再加一个 否定按钮，那就应该是 endButton（rtl（从右侧渲染）） - Button
-      -->
+      <!-- 
+         2. 我们在 Dialog 中加入了一个 hello-world ICON，指定了 Size 和 Margin
+
+         官方 wiki:
+            1. 如果可以使用 icon font，那么尽量不要使用 images
+               - 1. icon font 为 矢量图，不会因为大小的改变而 失真
+               - 2. images 需要单独加载，占用资源，影响加载速度
+       -->
+      <content>
+         <core:Icon 
+            src="sap-icon://hello-world"
+            size="8rem"
+            class="sapUiMediumMargin"/>
+      </content>
+
       <beginButton>
          <Button
             text="{i18n>dialogCloseButtonText}"
