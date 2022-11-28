@@ -4,13 +4,9 @@
    xmlns:mvc="sap.ui.core.mvc"
    displayBlock="true">
 
-   <!-- 
-        1. 使用 Margins 和 Paddings 属性来调节 Element / Controls 的位置间距
-        2. Wiki 建议可以直接使用 SAPUI5 官方封装好的 Classes 来调节
-        PS: Use the standard SAPUI5 CSS classes for the layout if possible.
-    -->
     <Shell>
-        <App>
+        <!-- 3. 引入 myAppDemoWT selector -->
+        <App class="myAppDemoWT">
             <pages>
                 <Page title="{i18n>homePageTitle}">
                     <content>
@@ -22,16 +18,23 @@
                                 <Button
                                 text="{i18n>showHelloButtonText}"
                                 press=".onShowHello"
-                                class="sapUiSmallMarginEnd"/>
+                                class="myCustomButton"/>
                          
                              <Input
                                 value="{/recipient/name}"
                                 description="Hello {/recipient/name}"
                                 valueLiveUpdate="true"
                                 width="60%"/>
-                            <Text
-                                text="Hello {/recipient/name}"
-                                class="sapUiSmallMargin"/>
+
+                            <!-- 4. 这里可以看到 关于 Theme Color 我们并未在 CSS 样式中写死
+                                 5. 而是选择了 SAPUI5 官方的 Class 来保证 Highlight 会一直和整体的主题的高亮颜色保持一致性
+                                 PS: Highlight 颜色现在将取决于 用户选择的 主题颜色 -> it's more flexible!
+
+                                 官方 wiki: Do not specify colors in custom CSS but use the standard theme-dependent classes instead.
+                            -->
+                            <FormattedText 
+                                htmlText="Hello {/recipient/name}"
+                                class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
                             </content>                        
                         </Panel>
                     </content>

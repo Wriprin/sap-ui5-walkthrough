@@ -1,0 +1,21 @@
+html[dir="ltr"] .myAppDemoWT .myCustomButton.sapMBtn {
+    /* 
+     * 1. 构建 CSS 样式文件，使用 rem 作为单位原因可参见文章：
+     * - https://blog.hubspot.com/website/css-rem
+     * - Why should you use rem units? 部分 内容
+     * - px : rem = 16 : 1
+     * - e.g. 2px = 0.125rem
+     */
+    margin-right: 0.125rem
+ }
+ 
+ html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
+    margin-left: 0.125rem
+ }
+ 
+ .myAppDemoWT .myCustomText {
+    display: inline-block;
+    font-weight: bold;
+ } 
+ 
+ /* 2. 在 manifest.json 文件中引入 css 样式文件 */
