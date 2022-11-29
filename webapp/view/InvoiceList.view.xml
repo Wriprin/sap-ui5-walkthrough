@@ -1,0 +1,24 @@
+<mvc:View
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc">
+
+   <!-- 
+        5. 该 View 用于展示 Invoices 所有数据
+            - items 属性为 {invoice>/Invoices}
+                - 指定 JSONModel 对象为 invoice
+                - 指定 该 JSON 数据中的 根节点为 Invoices
+                - 那么这句话连起来就是说将 项目(items) 数据源的根路径配置为了 Invoices.json(invoice JSONModel) 的 Invoices 数据对象
+                - 因此：title 部分的数据就可以使用 invoice>...（JSONModel>属性）的格式 来指定对应属性即可
+    -->
+   <List
+      headerText="{i18n>invoiceListTitle}"
+      class="sapUiResponsiveMargin"
+      width="auto"
+      items="{invoice>/Invoices}" >
+      <items>
+         <ObjectListItem
+            title="{invoice>Quantity} x {invoice>ProductName}"/>
+      </items>
+   </List>
+
+</mvc:View>

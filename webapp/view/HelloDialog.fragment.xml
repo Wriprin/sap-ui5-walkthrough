@@ -5,14 +5,6 @@
       id="helloDialog"
       title="Hello {/recipient/name}">
 
-      <!-- 
-         2. 我们在 Dialog 中加入了一个 hello-world ICON，指定了 Size 和 Margin
-
-         官方 wiki:
-            1. 如果可以使用 icon font，那么尽量不要使用 images
-               - 1. icon font 为 矢量图，不会因为大小的改变而 失真
-               - 2. images 需要单独加载，占用资源，影响加载速度
-       -->
       <content>
          <core:Icon 
             src="sap-icon://hello-world"

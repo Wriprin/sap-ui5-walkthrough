@@ -8,13 +8,6 @@
       class="sapUiResponsiveMargin"
       width="auto" >
       <content>
-         <!-- 
-            1. 添加一个 World 样式的 ICON 到 Button 上
-               - sap-icon://<iconname> 是 OpenUI5 规定写法
-               - 表示该格式下，将从 Font Icon 库中去读取
-               - 我们可以使用 Icon Explorer tool in the Demo Kit 来查看所有的可用 ICON
-                  - URL: https://sapui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html
-          -->
         <Button
             id="helloDialogButton"
             icon="sap-icon://world"
