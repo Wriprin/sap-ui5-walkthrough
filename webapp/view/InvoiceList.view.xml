@@ -3,18 +3,12 @@
    controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
    xmlns:mvc="sap.ui.core.mvc">
 
-   <!-- 
-      - Step 25: Remote OData Service
-      - 由于跨域问题，无法成功请求，但是该进行的 manifest 配置的修改都已完成
-      - 在实际开发中，使用 WebIDE 进行开发，会配置 Destination 文件，来连接 Server，从而避免跨域问题 
-    -->
-
    <List
       id="invoiceList"
       class="sapUiResponsiveMargin"
       width="auto"
       items="{
-         path : 'invoice>/Invoice',
+         path : 'invoice>/Invoices',
          sorter : [
             {
                path : 'ShipperName',
