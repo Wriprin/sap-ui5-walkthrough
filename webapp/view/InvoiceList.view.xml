@@ -4,18 +4,17 @@
    xmlns:mvc="sap.ui.core.mvc">
 
    <!-- 
-      - Step 24: Sorting and Grouping
-      1. 对 items 添加 sorter，指定 path 和 排序对象（sorter-path）
-      2. 默认升序排列，如果想要降序排列，添加「descending : true」即可
-      3. 想要分组，添加「group : true」即可
-      4. 实现次排序：转为 数组，再加一条即可
+      - Step 25: Remote OData Service
+      - 由于跨域问题，无法成功请求，但是该进行的 manifest 配置的修改都已完成
+      - 在实际开发中，使用 WebIDE 进行开发，会配置 Destination 文件，来连接 Server，从而避免跨域问题 
     -->
+
    <List
       id="invoiceList"
       class="sapUiResponsiveMargin"
       width="auto"
       items="{
-         path : 'invoice>/Invoices',
+         path : 'invoice>/Invoice',
          sorter : [
             {
                path : 'ShipperName',
