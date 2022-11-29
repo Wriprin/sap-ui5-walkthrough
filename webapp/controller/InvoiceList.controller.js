@@ -7,7 +7,7 @@ sap.ui.define([
 	return Controller.extend("sap.ui.demo.walkthrough.controller.InvoiceList", {
 
 		onInit : function () {
-            // 4. 创建 Currency JSONMOdel，并绑定到视图
+            // 创建 Currency JSONMOdel，并绑定到视图
 			var oViewModel = new JSONModel({
 				currency: "EUR"
 			});

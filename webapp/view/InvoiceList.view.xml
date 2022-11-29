@@ -8,23 +8,24 @@
       class="sapUiResponsiveMargin"
       width="auto"
       items="{invoice>/Invoices}" >
-      
-      <!-- 
-         1. 该节 意在 学习使用 Data Types
-            - 官方 wiki: Use data types instead of custom formatters whenever possible.
-         2. 在 ObjectListItem 中添加了 number 和 numberUnit 属性
-            - number: 字面意思 指代 number，但是这里我们为其添加了几个 属性 后，就有了 Currency 的含义
-               - parts: 可以理解为组成部分
-               - type: 这里指定为了 Currency 类型
-               - formatOptions - showMeasure 为 false 意在将 单位分离出来，放到 numberUnit 属性中
-                  - 隐藏原因：This hides the currency code in the property number, because it is passed on to the ObjectListItem control as a separate property numberUnit.
-                  - 意思是，Currency Code 在该控件下，有单独的属性来接收该值，并显示该值 -> numberUnit
-            - numberUnit: 用于接收显示 数值型 单位
-
-         3. 为了能够访问我们的 Currency 货币的数据模型，我们需要创建对应的 Controller 文件，并在 onInit 初始构造中配置 Currency JSONModel，并绑定到视图
-       -->
 
       <items>
+         <!-- 
+            - Step 21: Expression Binding
+               - 官方 wiki: Only use expression binding for trivial calculations.
+               - 这类表达式只是用于一些简单的计算/逻辑判断 etc.
+               
+            - 为控件添加 numberState 属性
+               - {= ...}：「{} 包裹，= 开头」-> 表示启用绑定语法
+                  - This symbol is used to initiate a new binding syntax, 
+                  - it's called an expression and can do simple calculation logic 
+                  - like the ternary operator shown here.
+
+               - $ 的目的是对后面的指定 Data Model 的语法进行转义
+               - 再往后就是正常的三元运算了
+               - 整体含义就是判断 每条数据的 价格，如果 > 50 则对应 Error（显示红色），如果 < 50 则对应 Success（显示绿色）
+
+          -->
          <ObjectListItem
             title="{invoice>Quantity} x {invoice>ProductName}"
             number="{
@@ -34,7 +35,8 @@
                   showMeasure: false
                }
             }"
-            numberUnit="{view>/currency}"/>
+            numberUnit="{view>/currency}"
+            numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"/>
       </items>
    </List>
 
