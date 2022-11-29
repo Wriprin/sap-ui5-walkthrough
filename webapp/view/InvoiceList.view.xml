@@ -10,22 +10,6 @@
       items="{invoice>/Invoices}" >
 
       <items>
-         <!-- 
-            - Step 21: Expression Binding
-               - 官方 wiki: Only use expression binding for trivial calculations.
-               - 这类表达式只是用于一些简单的计算/逻辑判断 etc.
-               
-            - 为控件添加 numberState 属性
-               - {= ...}：「{} 包裹，= 开头」-> 表示启用绑定语法
-                  - This symbol is used to initiate a new binding syntax, 
-                  - it's called an expression and can do simple calculation logic 
-                  - like the ternary operator shown here.
-
-               - $ 的目的是对后面的指定 Data Model 的语法进行转义
-               - 再往后就是正常的三元运算了
-               - 整体含义就是判断 每条数据的 价格，如果 > 50 则对应 Error（显示红色），如果 < 50 则对应 Success（显示绿色）
-
-          -->
          <ObjectListItem
             title="{invoice>Quantity} x {invoice>ProductName}"
             number="{
@@ -36,7 +20,28 @@
                }
             }"
             numberUnit="{view>/currency}"
-            numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"/>
+            numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}">
+
+               <!-- 
+                  7. firstStatus - ObjectStatus 标签来显示 Status 数据
+                  8. path 指代显示的对应数据，同时 也作为了我们 formatter.js 中 statusText FUNC 的 sStatus 实参
+                  9. formatter 指代调用对应 formatter 的 statusText Func 来处理（Format） path 指定的对应数据
+                -->
+               <firstStatus>
+                  <!-- 10. the Meaning of "."
+                     - A "." in front of the formatter name means that 
+                     - the function is looked up in the controller of the current view. 
+                     - There we defined a property formatter that holds our formatter functions, 
+                     - so we can access it by .formatter.statusText.
+                   -->
+                  <ObjectStatus 
+                     text="{
+                        path: 'invoice>Status',
+                        formatter: '.formatter.statusText'
+                     }"/>
+               </firstStatus>
+
+            </ObjectListItem>
       </items>
    </List>
 
