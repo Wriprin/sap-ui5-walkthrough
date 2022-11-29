@@ -10,18 +10,6 @@
                 <Page title="{i18n>homePageTitle}">
                     <content>
                         <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.HelloPanel"/>
-
-                        <!-- 
-                            1. 创建 Invoices.json 创建固定数据的 数据源 文件
-                            2. 配置数据源到 manifest.json 文件
-                                - 注意：invoice 是 配置到了「sapui5 - model - invoice」层级位置
-                            3. Component.js 文件加载 manifest.json 后，JSONModel 会自动被实例化
-                                - PS: Automatic model instantiation is only available as of SAPUI5 version 1.30. 
-                                - If you are using an older version, you can manually instantiate the resource bundle 
-                                - and other models of the app in the init method of the Component.js files
-                            4. 在 主视图 App.view.xml 中包含 InvoiceList View
-                         -->
-
                          <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.InvoiceList"/>
                     </content>
                 </Page>
