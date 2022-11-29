@@ -2,7 +2,6 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel",
     "../model/formatter",
-    // 3. 引入相关依赖
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator"
 ], function (Controller, JSONModel, formatter, Filter, FilterOperator) {

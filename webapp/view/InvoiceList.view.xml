@@ -4,16 +4,29 @@
    xmlns:mvc="sap.ui.core.mvc">
 
    <!-- 
-      1. 添加 List Header 部分
-      2. 为 List 添加 id
-         - identify the list from the event handler function onFilterInvoices 
-         - that we add to the search field
+      - Step 24: Sorting and Grouping
+      1. 对 items 添加 sorter，指定 path 和 排序对象（sorter-path）
+      2. 默认升序排列，如果想要降序排列，添加「descending : true」即可
+      3. 想要分组，添加「group : true」即可
+      4. 实现次排序：转为 数组，再加一条即可
     -->
    <List
       id="invoiceList"
       class="sapUiResponsiveMargin"
       width="auto"
-      items="{invoice>/Invoices}" >
+      items="{
+         path : 'invoice>/Invoices',
+         sorter : [
+            {
+               path : 'ShipperName',
+               group : true
+            },
+            {
+               path : 'ExtendedPrice',
+               descending : true
+            }
+         ]
+      }" >
 
       <!-- 搜索框 -->
       <headerToolbar>
