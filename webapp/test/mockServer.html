@@ -4,61 +4,6 @@
 	<meta charset="utf-8">
 	<title>SAPUI5 Walkthrough - Test Page</title>
 
-	<!-- 
-		Step 26: Mock Server Configuration
-		
-		1. 首先，我们创建了 test 文件夹，将生产和测试环境分离
-			- 该文件夹下的所有代码仅供测试使用
-				- mockServer.html
-					- 该文件是拷贝自 index.html，同样负责展示页面，只不过是在 测试 环境中使用
-					- 修改项
-						1. title 名称修改，区分点
-						2. bootstrap 的 oninit 的修改
-							- Index 是直接通过 Component.js 文件加载
-							- 在测试环境中，我们需要提前虚拟构建一个服务器，所以需要通过新构建的文件 initMockServer.js 来实现该功能
-						3. resourceroots 相对路径修改
-				- initMockServer.js
-					- 负责在调用 Component 前，构建我们的虚拟服务器
-						- 其中的 mockserver.init() 方法为 构建服务器的 FUNC
-						- 然后再去加载 Component
-		
-		2. 构建 localService 本地服务
-			- localService
-				- mockdata
-					- Invoices.json
-					- 该文件还是 JSON 格式的数据源文件，唯一改动的地方就是将原来的外层为 Invoices 的对象拿掉，改为了 扁平化结构
-						- 因为我们现在是使用了 Entity Set -> Invoices，无需外层结构指定对象
-						※ - 关于「path : 'invoice>/Invoices'」的理解：
-							- path 后面为 model 的 相对 / 绝对路径
-							- 如果 使用了「>」,那么「>」前的内容就会「拥有 Model 的所有权」，意味着后续的每个属性的调用可以通过 invoice>xxx 来调用
-							- 那么「>」后的内容才是 Model 的 相对 / 绝对路径
-								- 这里是「/Invoices」，那么最终路径就是 manifest.json 中配置的 dataSource + /Invoices
-								- 拼接后：https://services.odata.org/V2/Northwind/Northwind.svc/Invoices
-
-						- 因此，假如 我们想修改 Invoices 为 Goods：
-							- 首先要修改 metadata.xml 对应的 Entity Set Name
-							- 然后要修改 Invoices.json -> 为 Goods.json
-								- 原因：参见 mockserver.js 文件的 uri 拼接部分代码即可理解原因（代码 24 行）
-							
-				- metadata.xml
-					- 文档对象模型，其中包含了 Entity Type 和 相关所有的 Properties 信息
-					- 该文件在 SAP 构建 OData Model，发布 Service 时，会自动生成，无需手动编写
-				- mockserver.js
-					- 这就是我们在第一步调用的 mockserver.init() 来构建虚拟服务器的 FUNC
-					- 其中的 rootUri 为 manifest.json 中手动指定的 dataSouce-uri，二者只需要保持一致即可
-		
-		3. 至此，我们就完成了一个 虚拟的服务器 的 OData Service 的构建
-			- 为了保证骗过 Component，我们还特地在加载前，先构建虚拟服务器，并指定配置路径
-			- 这样一来，当访问对应 uri 时，我们就会访问到 mockServer，获取对应数据
-		
-		4. 规范约定：
-			- The webapp/test folder contains non-productive code only.
-
-			- Mock data and the script to start the MockServer are stored in the webapp/localService folder.
-
-			- The script to start the MockServer is called mockserver.js.
-	 -->
-
 	<script
 		id="sap-ui-bootstrap"
 		src="https://sdk.openui5.org/resources/sap-ui-core.js"
