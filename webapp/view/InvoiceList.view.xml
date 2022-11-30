@@ -45,7 +45,6 @@
             numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"
             type="Navigation"
             press="onPress">
-            <!-- 5. 添加一个 Press 事件，并设置 Type 为 Nav，在对应 Controller 中撰写 Nav 路由导航逻辑，跳转到 Detail 页面 -->
 
                <firstStatus>
                   <ObjectStatus 

@@ -4,11 +4,6 @@
    xmlns:mvc="sap.ui.core.mvc"
    displayBlock="true">
 
-    <!-- 
-        3. 将 所有内容迁移到 Overview 页面
-        4. App 页面仅保留 一个 App tag
-     -->
-
     <Shell>
         <App class="myAppDemoWT" id="app"/>
     </Shell>

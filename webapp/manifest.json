@@ -78,8 +78,8 @@
                     "target": "overview"
                 },
                 {
-                    "pattern": "tmpUri",
-                    "name": "tmpUri",
+                    "pattern": "detail/{invoicePath}",
+                    "name": "detail",
                     "target": "detail"
                 }
             ],

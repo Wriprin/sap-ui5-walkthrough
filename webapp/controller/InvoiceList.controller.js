@@ -47,11 +47,22 @@ sap.ui.define([
          * @param {*} oEvent 
          */
 		onPress: function(oEvent) {
+            // getSource: It will return the ObjectListItem that has been clicked in our case
+            var oItem = oEvent.getSource();
+
 			// 获取 Router
             var oRouter = this.getOwnerComponent().getRouter();
 
-            // 导航值 详情页面 - detail
-            oRouter.navTo("tmpName");
+            // 导航值 详情页面 - detail 带参路由
+            oRouter.navTo("detail", {
+                // The parameters will be URI encoded - the characters ; , / ? : @ & = + $ are reserved 
+                // And will not be encoded. If you want to use special characters in your oParameters
+                // You have to encode them (encodeURIComponent).
+                invoicePath: window.encodeURIComponent(oItem.getBindingContext("invoice").getPath().substr(1))
+                // e.g.「/Invoices(ProductName='Milk',Quantity=4,ShipperName='ACME')」
+                // 截取掉 /，并转义部分字符
+                // 结果：「Invoices(ProductName%3D'Milk'%2CQuantity%3D4%2CShipperName%3D'ACME')」
+            });
 		}
 
     });
