@@ -3,26 +3,6 @@
    controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
    xmlns:mvc="sap.ui.core.mvc">
 
-   <!-- 
-      Step 29: Debugging Tools
-
-      1. 通过「Ctrl + Shift + Alt / Option + S」打开 SAPUI5 提供的 Debug Tool
-
-      2. 安装「UI5 Inspector」在 Console 页面「更好的」查看整体页面元素 & Bindings & Models
-         - https://github.com/SAP/ui5-inspector
-      
-      3. 通过「Ctrl + Shift + Alt / Option + P」，勾选「使用调试源（Use Debug Sources）」，重新加载页面，会将所有 源文件 加载
-         - These are the source code files that include comments and the uncompressed code of the app and the SAPUI5 artifacts.
-         - As per SAPUI5 convention uncompressed source files end with *-dbg.js
-      
-      4. 出现问题
-         - Debug 调试
-         - SAP Community
-            - https://www.sap.com/community/topic/ui5.html
-         - Stack Overflow
-            - https://stackoverflow.com/search?q=sapui5
-    -->
-
    <List
       id="invoiceList"
       class="sapUiResponsiveMargin"
@@ -62,7 +42,10 @@
                }
             }"
             numberUnit="{view>/currency}"
-            numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}">
+            numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"
+            type="Navigation"
+            press="onPress">
+            <!-- 5. 添加一个 Press 事件，并设置 Type 为 Nav，在对应 Controller 中撰写 Nav 路由导航逻辑，跳转到 Detail 页面 -->
 
                <firstStatus>
                   <ObjectStatus 

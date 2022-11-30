@@ -4,17 +4,13 @@
    xmlns:mvc="sap.ui.core.mvc"
    displayBlock="true">
 
+    <!-- 
+        3. 将 所有内容迁移到 Overview 页面
+        4. App 页面仅保留 一个 App tag
+     -->
+
     <Shell>
-        <App class="myAppDemoWT">
-            <pages>
-                <Page title="{i18n>homePageTitle}">
-                    <content>
-                        <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.HelloPanel"/>
-                        <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.InvoiceList"/>
-                    </content>
-                </Page>
-            </pages>
-        </App>
+        <App class="myAppDemoWT" id="app"/>
     </Shell>
 
 </mvc:View>

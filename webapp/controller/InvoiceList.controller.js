@@ -40,7 +40,19 @@ sap.ui.define([
 
             // PS: The filter operator FilterOperator.Contains is「not」case-sensitive.
             oBinding.filter(aFilter);
-        }
+        },
+
+        /**
+         * 路由测试 item 点击 至详情页面
+         * @param {*} oEvent 
+         */
+		onPress: function(oEvent) {
+			// 获取 Router
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            // 导航值 详情页面 - detail
+            oRouter.navTo("tmpName");
+		}
 
     });
 });
