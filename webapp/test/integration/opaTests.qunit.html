@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Integration tests for SAPUI5 Walkthrough</title>
+	<meta charset="utf-8">
+
+    <!-- 
+        Step 28: Integration Test with OPA 集成测试
+
+        1. NavigationJourney.js
+            1.1 引入相关依赖
+            1.2 启动一个 mockserver
+            1.3 通过 OPA 的三个 FUNC
+                - When: 触发动作
+                - Then: 断言 / 判断测试
+                - Then: 销毁
+            1.4 以上完成整个测试的流程概览，接下来需要完成 FUNC 的具体逻辑代码
+
+        2. App.js
+            - 指定 View，并完成 When 和 Then 的 FUNC 的逻辑代码
+        
+        3. opaTests.qunit.html
+            - 构建 集成测试 页面
+        
+        4. opaTests.qunit.js
+            - 加载，调用启动 NavigationJourney.js
+     -->
+
+	<script
+		id="sap-ui-bootstrap"
+		src="https://sdk.openui5.org/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_belize"
+		data-sap-ui-resourceroots='{
+			"sap.ui.demo.walkthrough": "../../"
+		}'
+		data-sap-ui-animation="false"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true">
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="https://sdk.openui5.org/resources/sap/ui/thirdparty/qunit-2.css">
+
+	<script src="https://sdk.openui5.org/resources/sap/ui/thirdparty/qunit-2.js"></script>
+	<script src="https://sdk.openui5.org/resources/sap/ui/qunit/qunit-junit.js"></script>
+
+	<script src="opaTests.qunit.js"></script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+</body>
+</html>
