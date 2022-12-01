@@ -3,21 +3,10 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 
-	<!-- 
-		Step 31: Routing with Parameters
-
-		1. 首先 manifest 配置中将 target 为 "detail" 的 route 的 pattern 添加 arguments，实现不同 item 对应不同详情 url 页面
-		2. 当点击指定条目时，我们要将指定条目的部分关键信息进行传递，使得我们可以获取该条目的详细信息
-			- 在 InvoiceList Controller 中 press 事件对应的 FUNC 中，使用 Router 对象的 navTo 方法
-			- 路由指向跳转到 Detail 页面的同时，将后面的参数同时携带到 Detail 页面
-			- 后续我们将通过 Detail Controller 来实现将 参数 decode，并进行 Context Binding（元素绑定）
-				- 关于元素绑定，可以移步了解：
-					- https://sapui5.hana.ondemand.com/sdk/#/topic/91f05e8b6f4d1014b6dd926db0e91070.html
-		3. 然后我们就可以在 Detail View 中构建页面并使用绑定好的数据进行展示 {invoice>...}
-	 -->
-
 	<Page
-		title="{i18n>detailPageTitle}">
+		title="{i18n>detailPageTitle}"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
 		<ObjectHeader
 			id="objectHeader"
 			intro="{invoice>ShipperName}"
